@@ -6,6 +6,10 @@ import { App } from './app';
 
 import { CoursesModule } from './courses/courses.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptorService } from './interceptors/http-error-interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +18,20 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoursesModule, 
-    HttpClientModule
+    CoursesModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [App]
 })

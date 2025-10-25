@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { App } from './app';
+import { CoursesComponent } from './courses/courses.component';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -9,7 +10,7 @@ describe('App', () => {
         RouterModule.forRoot([])
       ],
       declarations: [
-        App
+        App, CoursesComponent
       ],
     }).compileComponents();
   });
