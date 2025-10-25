@@ -19,8 +19,18 @@ export class CourseList implements OnInit {
   });
 }
 
+  getSeasonAverage(){
+    let totalSeasons = 0;
+    this.courses.forEach(course => {
+      totalSeasons += course.seasons;
+      
+    });
+    return totalSeasons / this.courses.length;
+  }
+
   ngOnInit() {
     this.getCoursesList();
+    this.getSeasonAverage();
   }
 
 }

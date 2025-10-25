@@ -4,25 +4,34 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="h4">Course's Name</th>
-          <th class="h4">Professor's Name</th>
-          <th class="h4">Credits</th>
+          <th class="h4">#</th>
+          <th class="h4">Name</th>
+          <th class="h4">Channel</th>
+          <th class="h4">Seasons</th>
         </tr>
       </thead>
       <tbody>
         @for (c of courses; track c) {
         <tr>
           <td>
+            <dd>{{ c.id }}</dd>
+          </td>
+          <td>
             <dd>{{ c.name }}</dd>
           </td>
           <td>
-            <dd>{{ c.professor }}</dd>
+            <dd>{{ c.channel }}</dd>
           </td>
           <td>
-            <dd>{{ c.credits }}</dd>
+            <dd>{{ c.seasons }}</dd>
           </td>
         </tr>
         }
+        <tr>
+          <td colspan="4" class="h5 text-start">
+            Seasons average:  {{ getSeasonAverage() }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
